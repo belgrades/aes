@@ -3,7 +3,7 @@
 typedef unsigned char byte; 
 
 struct word{
-		byte w[4];
+	byte w[4];
 };
 
 void hex(byte a){
@@ -11,20 +11,20 @@ void hex(byte a){
 }
 
 byte xtime(byte in){
-	if(in&0x80){
+	if(in & 0x80){
 		return (in<<1)^0x1b;	
 	}
 	return in<<1;
 }
 
-byte mult(byte in_1,byte in_2){
-	byte mask,result,piv;
+byte mult(byte in_1, byte in_2){
+	byte mask, result, piv;
 	mask = 0x01;
 	result = 0x00;
 	piv = in_1;	
-	for(int i=0;i<8;i++){
-		if(in_2&mask) result^=piv;
-		mask = mask<<1;
+	for(int i=0; i<8; i++){
+		if(in_2 & mask) result^=piv;
+		mask = mask << 1;
 		piv = xtime(piv);
 	}
 	return result;
@@ -32,7 +32,7 @@ byte mult(byte in_1,byte in_2){
 
 word operator +(word in_1,word in_2){
 	word result;
-	for(int i=0;i<4;i++) result.w[i] = in_1.w[i]^in_2.w[i];
+	for(int i=0; i<4; i++) result.w[i] = in_1.w[i]^in_2.w[i];
 	
 	return result;
 }
@@ -96,7 +96,7 @@ void InvMixColumns(){
 
 int main(){
 	byte a=0x57;
-	byte b=0x83;
+	byte b=0x13;
 	hex(a);
 	printf(" * ");
 	hex(b);
@@ -104,7 +104,7 @@ int main(){
 	hex(mult(a,b));
 	printf("\n");	
 	
-	word data1,data2,data3,prueba;
+	word data1, data2, data3, prueba;
 	data1.w[0]=data1.w[1]=data1.w[2]=data1.w[3]= 0x57;
 	data2.w[0]=data2.w[1]=data2.w[2]=data2.w[3]= 0x83;
 	
@@ -132,9 +132,5 @@ int main(){
 	hex(prueba.w[2]);
 	hex(prueba.w[3]);
 	
-	
-	
-	
-	getchar();
 	return 0;
 }
