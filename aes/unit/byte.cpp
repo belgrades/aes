@@ -6,7 +6,7 @@ Byte::Byte() : value(0x00){}
 Byte::Byte(byte b) : value(b){}
 
 ostream& operator<<(ostream& output, const Byte& b){
-    output << "0x" << setfill('0') << setw(2) << right << hex << (int) b.value;
+    output << "0x" << setfill('0') << setw(2) << right << uppercase << hex << (int) b.value;
     
     return output;
 } 
