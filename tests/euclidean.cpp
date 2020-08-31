@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<iostream>
+#include"../aes/unit/byte.h"
 
 using namespace std;
 
@@ -75,15 +76,59 @@ byte suma(byte in_1, byte in_2){
     return in_1 ^ in_2;
 }
 
-void euclidean(byte r1){
+byte affine(byte in){
+    byte c=0x63, m=0x01, s=0x00, p=0x00;
+    byte b_0, b_4, b_5, b_6, b_7;
+    for(byte i=0; i<8; i++){
+        b_0 = (in&(m<<i))>>i;
+        b_4 = (in&(m<<((i+4)%8)))>>((i+4)%8);
+        b_5 = (in&(m<<((i+5)%8)))>>((i+5)%8);
+        b_6 = (in&(m<<((i+6)%8)))>>((i+6)%8);
+        b_7 = (in&(m<<((i+7)%8)))>>((i+7)%8);
+        s = (b_0^b_4^b_5^b_6^b_7^((c&(m<<i))>>i));
+        p |= (s<<i);
+    }
+
+    return p;
+}
+
+byte xor_bits(byte x) {
+    return __builtin_parity(x);
+}
+
+byte rotate(byte in){
+    return (in<<1) | (in>>7 & 0x01); 
+}
+
+byte affine2(byte in){
+    byte c=0x63, m=0x01, s=0x00, p=0x00, t=0xF1;
+    for(byte i=0; i<8; i++){
+        s = xor_bits(in & t)^((c&(m<<i))>>i);
+        t = rotate(t);
+        p |= (s<<i);
+    }
+    return p;
+}
+
+byte inv_affine(byte in){
+    byte c=0xA0, m=0x01, s=0x00, p=0x00, t=0x4A;
+    for(byte i=0; i<8; i++){
+        s = xor_bits(in & t)^((c&(m<<i))>>i);
+        t = rotate(t);
+        p |= (s<<i);
+    }
+    return p;
+}
+
+byte euclidean(byte r1){
     // r0 > r1
-    if (r1 == 0x00) return hex(0x00);
+    if (r1 == 0x00) return 0x00;
 
     int r0 = 0x11b;
 
-    byte t[3] = {0, 1, 0};
-    byte s[3] = {1, 0, 0};
-    byte r[3] = {0, r1, 1};
+    byte t[3] = {0,  1,  0};
+    byte s[3] = {1,  0,  0};
+    byte r[3] = {0, r1,  1};
 
     int q;    
 
@@ -100,17 +145,22 @@ void euclidean(byte r1){
         s[1] = s[2];
         t[1] = t[2];
     }
-
-    hex(t[0]);
+    return t[0];
 }
 
 int main(){
+    Byte t;
     for(int i=0; i<256; i++){
-        euclidean((byte)(i));
-        
-		if((i+1) % 16 == 0) printf("\n");
+        t.value = affine(euclidean((byte)(i)));
+        cout << t << " ";
+		if((i+1) % 16 == 0) cout<<endl;
     }
-    
+    printf("\n Affine 2 \n");
+    for(int i=0; i<256; i++){
+        t.value = euclidean(inv_affine((byte)(i)));
+        cout << t << " ";
+		if((i+1) % 16 == 0) cout<<endl;
+    }
 
     return 0;
 }
