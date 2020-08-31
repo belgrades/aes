@@ -96,7 +96,7 @@ void InvMixColumns(){
 
 int main(){
 	byte a=0x57;
-	byte b=0x13;
+	byte b=0x83;
 	hex(a);
 	printf(" * ");
 	hex(b);
