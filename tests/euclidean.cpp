@@ -111,7 +111,7 @@ byte affine2(byte in){
 }
 
 byte inv_affine(byte in){
-    byte c=0xA0, m=0x01, s=0x00, p=0x00, t=0x4A;
+    byte c=0x05, m=0x01, s=0x00, p=0x00, t=0xA4;
     for(byte i=0; i<8; i++){
         s = xor_bits(in & t)^((c&(m<<i))>>i);
         t = rotate(t);
@@ -150,17 +150,48 @@ byte euclidean(byte r1){
 
 int main(){
     Byte t;
+    printf("Sbox(x) \n");
     for(int i=0; i<256; i++){
         t.value = affine(euclidean((byte)(i)));
         cout << t << " ";
 		if((i+1) % 16 == 0) cout<<endl;
     }
-    printf("\n Affine 2 \n");
+    printf("\nInvSbox(x) \n");
     for(int i=0; i<256; i++){
         t.value = euclidean(inv_affine((byte)(i)));
         cout << t << " ";
 		if((i+1) % 16 == 0) cout<<endl;
     }
+
+    printf("\n F(E(E-1(F-1(x))))\n");
+    for(int i=0; i<256; i++){
+        t.value = affine(euclidean(euclidean(inv_affine((byte)(i)))));
+        cout << t << " ";
+		if((i+1) % 16 == 0) cout<<endl;
+    }
+
+    printf("\n E(E-1(x)) \n");
+    for(int i=0; i<256; i++){
+        t.value = euclidean(euclidean((byte)(i)));
+        cout << t << " ";
+		if((i+1) % 16 == 0) cout<<endl;
+    }
+
+    printf("\n F-1(F(x)) \n");
+    for(int i=0; i<256; i++){
+        t.value = inv_affine(affine((byte)(i)));
+        cout << t << " ";
+		if((i+1) % 16 == 0) cout<<endl;
+    }
+
+    printf("\n F(F-1(x)) \n");
+    for(int i=0; i<256; i++){
+        t.value = affine(inv_affine((byte)(i)));
+        cout << t << " ";
+		if((i+1) % 16 == 0) cout<<endl;
+    }
+
+
 
     return 0;
 }
