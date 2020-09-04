@@ -1,0 +1,39 @@
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX spellcheck = en_US
+
+
+\documentclass[english]{beamer}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenx}
+\usepackage[T1]{fontenc}      % Font encoding
+\usepackage{lmodern}          % lmodern font, correctly copyable characters in pdf
+\usepackage[c2]{optidef}	  % Optimization Package
+\usepackage{pgfplots}
+\usepackage{amsmath}
+
+ 
+\usetheme[
+  bullet=circle,                  % Use circles instead of squares for bullets
+  titleline=true,                 % Show a line below the frame
+  alternativetitlepage=true,      % Use the fancy title
+  titlepagelogo=images/logo-sapienza,    % Logo for the first slide
+  watermark=images/watermark-sapienza,   % Watermark used in every slide
+  watermarkheight=20px,           % Desired height of the watermark
+  watermarkheightmult=6,          % Watermark image is actually x times bigger
+  displayauthoronfooter=true,     % Display author name in the footer
++]{Roma}
+
+\author{Fernando Crema Garcia}
+\title{Inside Rijndael. \\ Understanding of the arithmetic in Rijndael's finite field}
+\subtitle{Faculty of Information Engineering, Informatics, and Statistics}
+\institute{Master of Science in\\ Data Science\\ Sapienza, University of Rome}
+\date{A. Y. 2019 - 2020}
+
+\begin{document}
+
+\include{base}
+\include{1_introduction/regression}
+
+
+\end{document}
