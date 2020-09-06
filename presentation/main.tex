@@ -20,6 +20,7 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{mystyle}{
+	language=C++,
     backgroundcolor=\color{backcolour},   
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
@@ -35,7 +36,8 @@
     showspaces=false,                
     showstringspaces=false,
     showtabs=false,                  
-    tabsize=2
+    tabsize=2,
+    escapechar=| % Escape to LaTeX between |...|
 }
 
 \lstset{style=mystyle}
@@ -68,8 +70,25 @@
 
 
 \include{base}
-\include{content}
+%\include{content}
 \include{1_introduction/regression}
+
+\begin{frame}[fragile]
+	\begin{lstlisting}[language=C++, caption=Mult example]
+	typedef unsigned char |\color{codegreen}byte|; 
+
+	|\color{codegreen}byte| mult(|\color{codegreen}byte| in_1, |\color{codegreen}byte| in_2){
+		|\color{codegreen}byte| mask=0x01, result=0x00, piv=in_1;
+		
+		for(int i=0; i<8; i++){
+			if(in_2 & mask) result^=piv;
+			mask = mask << 1;
+			piv = xtime(piv);
+		}
+		
+		return result;
+	}\end{lstlisting}
+\end{frame}
 
 
 \end{document}
