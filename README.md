@@ -1,9 +1,11 @@
 # Inside Rijndael **(AES)**
+
 A basic AES implementation to perform the basic operations in Rijndael's finite field, using the extended Euclidean algorithm.
 
 Fernando Crema
 Data Privacy and Security
 Sapienza, Università di Roma
+
 -------
 
 
