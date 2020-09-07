@@ -5,7 +5,6 @@ A basic AES implementation to perform the basic operations in Rijndael's finite 
 Fernando Crema
 
 Data Privacy and Security
-
 Sapienza, Università di Roma
 
 -------
@@ -27,4 +26,5 @@ Write a program (using your favourite programming language) able to:
 1. Paar, Christof, 1963-. Understanding Cryptography : a Textbook for Students and Practitioners. Berlin ; London :Springer, 2009.
 1. Katz, Jonathan and Lindell, Yehuda . Introduction to Modern Cryptography, CRC Press, Second Edition, 2014.
 1. Venturi, Daniele. Crittografia nel Paese delle Meraviglie, Springer, Collana di Informatica, 2012.
+1. Joan Daemen, Vincent Rijmen, "The Design of Rijndael: AES – The Advanced Encryption Standard." Springer, 2002. ISBN 3-540-42580-2.
 
