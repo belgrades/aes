@@ -1,0 +1,34 @@
+\subsection{Goal}
+
+\begin{frame}[t]{About this project}
+
+\textbf{Objective:} Gain a better understanding of the arithmetic in Rijndael's finite field (underlying the AES block-cipher). \\
+
+\textbf{Output:} A program able to:
+	\begin{itemize}
+		\item Perform the basic operations in Rijndael's finite field.
+			\begin{itemize}
+				\item Sum (and subtraction).
+				\item Multiplication.
+				\item Division.
+			\end{itemize}
+		\item Use the extended Euclidean algorithm \cite{Menezes2012handbook} for computing the multiplicative inverse of a polynomial.
+		
+		\item Use your program to re-generate the AES S-Boxes (for both encryption and decryption).
+		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{What is not}
+	
+	Even though the complete implementation of the AES is really interesting we will focus only on the under understanding of the arithmetic in Rijndael's finite field and the associated operations and implementations.
+\end{frame}
+
+\begin{frame}[t]{Bib load}
+	\begin{itemize}
+		\item \cite{Menezes2012handbook}
+		\item \cite{Venturi2012crittografia}
+		\item \cite{Katz2014modern}
+		\item \cite{Rijndael2020design}
+	\end{itemize}
+\end{frame}
