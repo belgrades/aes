@@ -1,0 +1,116 @@
+\section{Finite field in depth}
+
+\subsection{Preliminaries}
+
+\begin{frame}[t]{Group}
+	
+	An group \cite{Paar2010understanding} $(G, +)$ consists of a set $G$ and an operation defined on its elements, here denoted by $\circ$:
+	\[\circ: G \times G \to G : (a, b) \to a \circ b = c, c \in G\]
+	
+	A group has the following properties: 
+	
+	\begin{enumerate}[i.]
+		\item \textbf{Closed}: $\forall a, b \in G: a \circ b \in G$
+		\item \textbf{Associative}: $\forall a, b, c \in G: (a \circ b) \circ c = a \circ (b \circ c)$
+		\item \textbf{Neutral element}: $\exists 0 \in G, \forall a \in G: 0 \circ a = a$
+		\item \textbf{Inverse elements}: $\forall a \in G, \exists b \in G: a \circ b = 0$
+	\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[t]{Group Examples}
+	
+	Some easy examples of groups are:
+	
+	\medskip
+	
+	\begin{enumerate}[i.]
+		\item $\left( \mathbb{Z}, +\right)$
+		\item $\left( \mathbb{Z}_m, +\right)$ with:
+			\begin{itemize}
+				\item $Z_m = \left\{z \in \mathbb{Z}: z < m \right\}$
+				\item $+: G \times G \to G$ is $+(a, b) = a + b \mod m$
+			\end{itemize}  
+	\end{enumerate}
+	
+\end{frame}
+
+\begin{frame}[t]{Abelian Group}
+
+	A group \cite{Paar2010understanding, Menezes2012handbook} $G$ is abelian if the operation $\circ$ is abelian (commutative). 
+	
+	\bigskip
+	
+	So, the properties would be written as: 
+	
+	\medskip
+	
+	\begin{enumerate}[i.]
+		\item \textbf{Closed commutative}: $\forall a, b \in G: a \circ b = b \circ a = c, c \in G$
+		\item \textbf{Associative}: $\forall a, b, c \in G: (a \circ b) \circ c = a \circ (b \circ c)$
+		\item \textbf{Neutral element}: $\exists 0 \in G, \forall a \in G: 0 \circ a = a \circ 0 = a$
+		\item \textbf{Inverse elements}: $\forall a \in G, \exists b \in G: a \circ b = b \circ a = 0$
+	\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[t]{Ring}
+
+	A ring \cite{Rijndael2020design} $(R, +, \times)$ consists of a set $R$ with two operations defined on its elements, here denoted by $+$ and $\times$. For $R$ to qualify as a ring, the operations have to fulfill the following conditions:
+	
+	\medskip
+
+	\begin{enumerate}[i.]
+		\item The structure $(R, +)$ is an Abelian group.
+		\item The operation $\times$ is closed, and associative over $R$. There is a neutral element for $\times$ in $R$ usually denoted by $1$.
+		\item The two operations $+$ and $\times$ are related by the distributive law: $\forall a, b, c \in R : (a + b) \times c = (a \times c) + (b \times c)$. 
+	\end{enumerate}
+
+	\medskip
+
+	A ring $(R, +, \times)$ is called a commutative ring if the operation $\times$ is commutative.
+\end{frame}
+
+\begin{frame}[t]{Field}
+	A field \cite{Rijndael2020design, Paar2010understanding} $F$ is a set of elements with the following properties:
+	
+	\medskip
+	
+	\begin{enumerate}[i.]
+		\item The structure $(F, +, \times)$ is a commutative ring:
+			\begin{itemize}
+				\item All elements of $F$ form an additive group with the group operation $+$ and the neutral element $0$.
+				\item All elements of $F$ except for the $0$ form a multiplicative group with the operation $\times$ and the neutral element $1$. 
+			\end{itemize}
+		\item For all elements of $F$, there is an inverse element in $F$ with respect to the operation $\times$, except for the element 0, the neutral element of $(F, +)$.
+	\end{enumerate}
+	
+\end{frame}
+
+\begin{frame}[t]{Finite fields}{Definition}
+	A field $F$ is a \textbf{finite field} (or Galois Field) if the number of elements ($|F|$) is finite. 
+	
+	\medskip
+	
+	\begin{itemize}
+		\item The number of elements in the set is called the \textbf{order} of the field.
+		\item A field with \textbf{order} $m$ exists iff $m$ is a prime power. This is, \[m = p^n\] with $n \in \mathbb{Z}$ and $p$ a prime number. 
+		\item $p$ is called the \textbf{characteristic} of the finite field.
+	\end{itemize}
+	
+	\bigskip
+	
+	Finite fields used in the description of Rijndael have characteristic $2$.
+\end{frame}
+
+\begin{frame}[t]{Finite fields}{Remarks}
+	\begin{itemize}
+		\item The previous definition implies there are finite fields with $11$ elements or with $169$ elements because $169 = 13^2$. But not all $orders$ are possible. For example, there's no finite field with $24$ elements because $24=3*2^3$.
+		\item The most intuitive examples of finite fields use $p=1$ and are called prime fields. In fact, $GF(2)$ plays an important role in Rijndael.
+		\item The notation from now on for a Galois Field will be $GF(p^n)$.
+	\end{itemize}
+\end{frame}
+
+
+
+
