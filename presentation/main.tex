@@ -2,7 +2,6 @@
 % !TEX program = pdflatex
 % !TEX spellcheck = en_US
 
-
 \documentclass[english]{beamer}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenx}
@@ -42,13 +41,6 @@
 
 \lstset{style=mystyle}
 
-%\lstset { %
-%    language=C++,
-%    backgroundcolor=\color{black!5}, % set backgroundcolor
-%    basicstyle=\footnotesize,% basic font setting
-%}
-
- 
 \usetheme[
   bullet=circle,                  % Use circles instead of squares for bullets
   titleline=true,                 % Show a line below the frame
@@ -60,35 +52,26 @@
   displayauthoronfooter=true,     % Display author name in the footer
 +]{Roma}
 
-\author{Fernando Crema Garcia}
+\author[Crema]{Fernando Crema Garcia}
 \title{Inside Rijndael}
 \subtitle{Understanding of the arithmetic in Rijndael's finite field}
-\institute{Data Privacy and Security \\ Laurea Magistrale in Data Science\\ Sapienza, University of Rome}
-\date{A. Y. 2019 - 2020}
+\institute[Sapienza]{Data Privacy and Security \\ Laurea Magistrale in Data Science\\ Sapienza, University of Rome}
+\date[DPS 2020]{A. Y. 2019 - 2020}
 
 \begin{document}
 
 
 \include{base}
-%\include{content}
-\include{1_introduction/regression}
+\include{1_introduction/aes}
+\include{1_introduction/goal}
+\include{2_mathematics/finite_fields}
+\include{2_mathematics/operations}
+\include{3_implementation/codes}
 
-\begin{frame}[fragile]
-	\begin{lstlisting}[language=C++, caption=Mult example]
-	typedef unsigned char |\color{codegreen}byte|; 
-
-	|\color{codegreen}byte| mult(|\color{codegreen}byte| in_1, |\color{codegreen}byte| in_2){
-		|\color{codegreen}byte| mask=0x01, result=0x00, piv=in_1;
-		
-		for(int i=0; i<8; i++){
-			if(in_2 & mask) result^=piv;
-			mask = mask << 1;
-			piv = xtime(piv);
-		}
-		
-		return result;
-	}\end{lstlisting}
+\begin{frame}[allowframebreaks]
+	\frametitle{References}
+	\bibliographystyle{amsalpha}
+	\bibliography{bibliography}
 \end{frame}
-
 
 \end{document}
