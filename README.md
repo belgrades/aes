@@ -4,7 +4,7 @@ A basic AES implementation to perform the basic operations in Rijndael's finite 
 
 Fernando Crema
 
-Data Privacy and Security
+Data Privacy and Security\
 Sapienza, Università di Roma
 
 -------
