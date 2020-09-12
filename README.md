@@ -10,7 +10,7 @@ Sapienza, Università di Roma
 -------
 ## Goal
 
-**Inside Rijndael.**\
+**Inside Rijndael.**
 
 The goal of this project is to gain a better understanding of the arithmetic in Rijndael's finite field (underlying the AES blockcipher). In this sense, the basic idea is just to implement the phases **SubBytes** and the associated inverse **invSubBytes**. Therefore, we should:
 
@@ -18,7 +18,7 @@ The goal of this project is to gain a better understanding of the arithmetic in 
     - Multiplication
     - Sum
     - Division
-1. Implement the extended Euclidean Algorithm to find the multiplicative inverse of a polynomial **f(x)** such that **f(x)*f-1(x) mod m(x) = 1**
+1. Implement the extended Euclidean Algorithm to find the multiplicative inverse of a polynomial $f(x)$ such that $f(x) . f-1(x) mod m(x) = 1$
 
 ## Steps 
 
